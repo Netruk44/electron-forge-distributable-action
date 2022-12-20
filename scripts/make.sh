@@ -18,7 +18,7 @@ args=(
 
 # Check if PACKAGE_ROOT is set, if so, use it as the root for the package
 if [[ -n "$PACKAGE_ROOT" ]]; then
-  args=( ${args[@]} --dir "$PACKAGE_ROOT" )
+  args=( ${args[@]} --prefix "$PACKAGE_ROOT" )
 fi
 
 if [[ -n "$TARGET_ARCH" ]]; then
