@@ -16,6 +16,11 @@ args=(
   "$TARGET_PLATFORM"
 )
 
+# Check if PACKAGE_ROOT is set, if so, use it as the root for the package
+if [[ -n "$PACKAGE_ROOT" ]]; then
+  args=( ${args[@]} --dir "$PACKAGE_ROOT" )
+fi
+
 if [[ -n "$TARGET_ARCH" ]]; then
   args=( ${args[@]} --arch "$TARGET_ARCH" )
 fi

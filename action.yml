@@ -34,6 +34,9 @@ inputs:
   windows-cert-password:
     description: 'The password used to unlock the signing certificate so that it can sign the distributables. Provided to a JavaScript-based Forge config as `process.env.WINDOWS_CERT_PASSWORD`.'
     required: false
+  package-root:
+    description: 'The path to the root of the package containing the Electron app. Defaults to the root of the repository.'
+    required: false
 
 runs:
   using: composite
@@ -70,3 +73,4 @@ runs:
         TARGET_PLATFORM: ${{ inputs.target-platform }}
         WINDOWS_CERT_FILENAME: ${{ inputs.windows-cert-filename }}
         WINDOWS_CERT_PASSWORD: ${{ inputs.windows-cert-password }}
+        PACKAGE_ROOT: ${{ inputs.package-root }}
