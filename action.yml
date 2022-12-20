@@ -38,6 +38,9 @@ inputs:
     description: 'The working directory where the app is located.'
     default: '.'
     required: false
+  github-token:
+    description: 'The GitHub token used to authenticate with the GitHub API.'
+    required: true
 
 runs:
   using: composite
@@ -76,3 +79,4 @@ runs:
         TARGET_PLATFORM: ${{ inputs.target-platform }}
         WINDOWS_CERT_FILENAME: ${{ inputs.windows-cert-filename }}
         WINDOWS_CERT_PASSWORD: ${{ inputs.windows-cert-password }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}
