@@ -16,9 +16,9 @@ args=(
   "$TARGET_PLATFORM"
 )
 
-# Check if PACKAGE_ROOT is set, if so, use it as the root for the package
+# Check if PACKAGE_ROOT is set, if so, cd into it (`npm run make` doesn't have arguments to specify cwd)
 if [[ -n "$PACKAGE_ROOT" ]]; then
-  args=( ${args[@]} --prefix "$PACKAGE_ROOT" )
+  cd "$PACKAGE_ROOT"
 fi
 
 if [[ -n "$TARGET_ARCH" ]]; then
