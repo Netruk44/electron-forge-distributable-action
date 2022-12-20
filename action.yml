@@ -42,10 +42,6 @@ inputs:
     description: 'Skip the `npm/yarn package` step.'
     default: 'false'
     required: false
-  release:
-    description: 'Whether to create a release or not.'
-    default: 'false'
-    required: false
 
 runs:
   using: composite
@@ -86,4 +82,3 @@ runs:
         WINDOWS_CERT_PASSWORD: ${{ inputs.windows-cert-password }}
         PACKAGE_ROOT: ${{ inputs.package-root }}
         SKIP_PACKAGE: ${{ inputs.skip-package }}
-        RELEASE: ${{ inputs.release }}
