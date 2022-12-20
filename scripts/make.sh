@@ -36,3 +36,8 @@ elif [[ "$NODE_INSTALLER" = "yarn" ]]; then
 else
   "$(npm bin)"/yarn-or-npm run make -- "${args[@]}"
 fi
+
+# If RELEASE is true, upload the artifacts to GitHub Releases
+if [[ "$RELEASE" = "true" ]]; then
+  "$(npm bin)"/yarn-or-npm run publish
+fi
