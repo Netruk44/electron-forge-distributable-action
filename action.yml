@@ -38,6 +38,10 @@ inputs:
     description: 'The working directory where the app is located.'
     default: '.'
     required: false
+  skip-package:
+    description: 'Skip the `npm/yarn package` step.'
+    default: 'false'
+    required: false
 
 runs:
   using: composite
@@ -77,3 +81,4 @@ runs:
         WINDOWS_CERT_FILENAME: ${{ inputs.windows-cert-filename }}
         WINDOWS_CERT_PASSWORD: ${{ inputs.windows-cert-password }}
         PACKAGE_ROOT: ${{ inputs.package-root }}
+        SKIP_PACKAGE: ${{ inputs.skip-package }}

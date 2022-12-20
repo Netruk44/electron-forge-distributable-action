@@ -9,7 +9,6 @@
 set -e
 
 args=(
-  --skip-package
   --targets
   "$TARGET_MAKER"
   --platform
@@ -19,6 +18,11 @@ args=(
 # Check if PACKAGE_ROOT is set, if so, cd into it (`npm run make` doesn't have arguments to specify cwd)
 if [[ -n "$PACKAGE_ROOT" ]]; then
   cd "$PACKAGE_ROOT"
+fi
+
+# Check for SKIP_PACKAGE
+if [[ "$SKIP_PACKAGE" = "true" ]]; then
+  args=( ${args[@]} --skip-package )
 fi
 
 if [[ -n "$TARGET_ARCH" ]]; then
