@@ -15,29 +15,14 @@ args=(
   "$TARGET_PLATFORM"
 )
 
-# Check if PACKAGE_ROOT is set, if so, cd into it (`npm run make` doesn't have arguments to specify cwd)
-if [[ -n "$PACKAGE_ROOT" ]]; then
-  cd "$PACKAGE_ROOT"
-fi
-
-# Check for SKIP_PACKAGE
-if [[ "$SKIP_PACKAGE" = "true" ]]; then
-  args=( ${args[@]} --skip-package )
-fi
-
 if [[ -n "$TARGET_ARCH" ]]; then
   args=( ${args[@]} --arch "$TARGET_ARCH" )
 fi
 
 if [[ "$NODE_INSTALLER" = "npm" ]]; then
-  npm run make -- "${args[@]}"
+  npm run publish -- "${args[@]}"
 elif [[ "$NODE_INSTALLER" = "yarn" ]]; then
-  yarn make "${args[@]}"
+  yarn publish "${args[@]}"
 else
-  "$(npm bin)"/yarn-or-npm run make -- "${args[@]}"
-fi
-
-# If RELEASE is true, upload the artifacts to GitHub Releases
-if [[ "$RELEASE" = "true" ]]; then
-  "$(npm bin)"/yarn-or-npm run publish
+  "$(npm bin)"/yarn-or-npm run publish -- "${args[@]}"
 fi
